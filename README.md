@@ -4,7 +4,7 @@ A Claude Code plugin that edits talking-head reels (9:16, 30 fps) in **your** br
 
 You film and rough-cut. Reel Studio does the rest: word-synced captions, a hook that types out as you say it, 50/50 source splits with the real article and an underline on the phrase you say, statements that stay below your neck, up to two full-screen takeovers with particle illustrations, a 21-effect library, sound design and a mastered mix. Then two QA gates: an automated one (face guard, only your words, brand fonts and colours, loudness, render spec, the first 3 seconds) and an independent reviewer agent that scores the cut and lists defects with timestamps.
 
-Works on macOS, Windows and Linux. Everything runs locally.
+Built for macOS, Windows and Linux (tested on macOS so far; Windows and Linux reports welcome). Everything runs locally.
 
 ## Install
 
