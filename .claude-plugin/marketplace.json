@@ -1,0 +1,16 @@
+{
+  "name": "reel-studio",
+  "owner": {
+    "name": "Inneraktive"
+  },
+  "plugins": [
+    {
+      "name": "reel-studio",
+      "source": "./",
+      "description": "Edit talking-head reels end to end in your own brand, with guided setup and two-gate QA."
+    }
+  ],
+  "metadata": {
+    "description": "Reel Studio: edit talking-head reels in your own brand, with two-gate QA."
+  }
+}

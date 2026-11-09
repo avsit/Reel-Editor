@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Reel Studio brand file (compiled from brand.md by the reel-brand skill)",
+  "type": "object",
+  "required": ["name", "colors", "fonts"],
+  "properties": {
+    "name": { "type": "string" },
+    "handle": { "type": "string" },
+    "tagline": { "type": "string" },
+    "colors": {
+      "type": "object",
+      "required": ["ground", "text", "muted", "paper", "accent"],
+      "properties": {
+        "ground": { "type": "string", "pattern": "^#[0-9a-fA-F]{6}$", "description": "background most frames sit on" },
+        "text": { "type": "string", "pattern": "^#[0-9a-fA-F]{6}$", "description": "type on the ground (>= 7:1)" },
+        "muted": { "type": "string", "pattern": "^#[0-9a-fA-F]{6}$", "description": "labels, dimmed ideas" },
+        "paper": { "type": "string", "pattern": "^#[0-9a-fA-F]{6}$", "description": "light takeovers and source panels" },
+        "accent": { "type": "string", "pattern": "^#[0-9a-fA-F]{6}$", "description": "ONE word per moment (>= 4.5:1 on ground)" },
+        "accent_ink": { "type": "string", "pattern": "^#[0-9a-fA-F]{6}$", "description": "accent for underlines on paper" }
+      }
+    },
+    "fonts": {
+      "type": "object",
+      "required": ["display", "body", "label"],
+      "properties": {
+        "display": { "$ref": "#/$defs/font" }, "body": { "$ref": "#/$defs/font" }, "label": { "$ref": "#/$defs/font" }
+      }
+    },
+    "captions": { "type": "object", "properties": { "size": { "type": "integer", "minimum": 44, "maximum": 72 } } },
+    "rules": {
+      "type": "object",
+      "properties": {
+        "text_below_neck": { "type": "boolean" },
+        "max_takeovers": { "type": "integer", "minimum": 0, "maximum": 4 },
+        "speaker_words_only": { "type": "boolean" },
+        "accent_one_word": { "type": "boolean" },
+        "avoid_mic_led": { "type": "boolean" },
+        "captions_always_on": { "type": "boolean" }
+      }
+    },
+    "opening_default": { "enum": ["talking", "graphic", "ask"] },
+    "logo": { "type": ["string", "null"], "description": "path to a logo file the user supplied" },
+    "sound": {
+      "type": "object",
+      "properties": {
+        "music": { "type": ["string", "null"] },
+        "bed_db_under_voice": { "type": "number" },
+        "sfx": { "enum": ["subtle", "standard", "none"] }
+      }
+    },
+    "allow_words": { "type": "array", "items": { "type": "string" }, "description": "labels allowed on screen that the speaker doesn't say (name, handle)" },
+    "never": { "type": "array", "items": { "type": "string" } },
+    "tone": { "type": "string" }
+  },
+  "$defs": {
+    "font": {
+      "type": "object", "required": ["family"],
+      "properties": {
+        "family": { "type": "string" }, "weight": { "type": "integer" }, "tracking": { "type": "number" }, "italic": { "type": "boolean" }
+      }
+    }
+  }
+}

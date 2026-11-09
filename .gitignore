@@ -1,0 +1,26 @@
+# user content never goes in the repo
+projects/
+*.mp4
+*.mov
+*.m4a
+*.wav
+*.webm
+brand/*.brand.json
+!brand/example.brand.json
+brand/mine*
+!brand/example.brand.md
+!brand/brand.template.md
+# caches and environments
+.venv/
+node_modules/
+__pycache__/
+*.pyc
+.cache/
+models/
+qa/
+snaps*/
+.DS_Store
+reels/
+brand/brand.json
+brand/brand.md
+brand/style_board.html

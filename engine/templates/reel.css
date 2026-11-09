@@ -1,0 +1,56 @@
+/* Reel Studio page styles. Every colour and font comes from the brand file ({{...}} tokens, filled by engine/brand.py). */
+{{font_faces}}
+:root { --night:{{colors.ground}}; --bone:{{colors.text}}; --lime:{{colors.accent}}; --lime-ink:{{colors.accent_ink}}; --fog:{{colors.muted}}; --paper:{{colors.paper}}; }
+* { box-sizing:border-box; margin:0; }
+html, body { width:100%; height:100%; overflow:hidden; background:var(--night); }
+#stage { position:relative; width:1080px; height:1920px; overflow:hidden; font-family:'{{fonts.body.family}}',sans-serif; }
+#bg { position:absolute; inset:0; background:var(--night); z-index:0; }
+#video-wrap { position:absolute; left:0; top:0; width:1080px; height:1920px; overflow:hidden; z-index:1; transform-origin:0 0; }
+#video-wrap video { width:100%; height:100%; object-fit:cover; display:block; }
+.clip { position:absolute; pointer-events:none; }
+canvas { position:absolute; left:0; top:0; width:1080px; height:1920px; }
+
+/* type roles */
+.disp { position:absolute; left:90px; right:70px; font-family:'{{fonts.display.family}}'; font-weight:{{fonts.display.weight}}; letter-spacing:{{fonts.display.tracking}}; line-height:.92; color:var(--bone); }
+.lab  { position:absolute; left:90px; font-family:'{{fonts.label.family}}'; font-weight:{{fonts.label.weight}}; letter-spacing:{{fonts.label.tracking}}; text-transform:uppercase; font-size:26px; color:var(--fog); }
+.acc  { color:var(--lime); }
+.light .disp { color:var(--night); }
+.light .acc { color:var(--night); background:linear-gradient(transparent 62%, var(--lime) 62%, var(--lime) 92%, transparent 92%); }
+.wd { display:inline-block; }
+
+/* full-screen cards */
+.full { left:0; top:0; width:1080px; height:1920px; z-index:4; overflow:hidden; transform-origin:50% 45%; }
+.full.dark { background:var(--night); }
+.full.light { background:var(--paper); }
+
+/* statements on the chest (below the neck; top set by the face guard) */
+.chest { left:0; width:1080px; height:260px; z-index:6; }
+.stmt { position:absolute; left:40px; right:40px; top:0; text-align:center; font-family:'{{fonts.display.family}}'; font-weight:{{fonts.display.weight}}; letter-spacing:calc({{fonts.display.tracking}} + 0.01em); line-height:1;
+  font-size:96px; color:var(--bone); text-shadow:0 4px 30px rgba(0,0,0,.55); }
+.stmt .ne { color:var(--fog); }
+
+/* split: article panel on top, face box below */
+.shot { left:0; top:0; width:1080px; height:960px; overflow:hidden; z-index:3; background:var(--paper); }
+.shot .inner { position:absolute; left:0; top:0; width:1080px; transform-origin:0 0; background:var(--paper); }
+.shot img { display:block; width:1080px; mix-blend-mode:multiply; }   /* white page becomes Paper */
+.shot .mk { position:absolute; width:0; background:linear-gradient(transparent 80%, var(--lime-ink) 80%, var(--lime-ink) 93%, transparent 93%); }   /* a lime underline, not a block */
+/* source header strip: Paper bar over the top of the panel (clears the platform's top bar), label + hairline at its foot */
+.credit { left:0; top:0; width:1080px; height:222px; z-index:4; background:var(--paper); border-bottom:1.5px solid color-mix(in srgb, var(--night) 18%, transparent); }
+.credit .src { position:absolute; left:60px; bottom:22px; }
+.credit .src { font-family:'{{fonts.label.family}}'; font-weight:{{fonts.label.weight}}; font-size:20px; letter-spacing:.08em; text-transform:uppercase; color:var(--fog); }
+.media img { position:absolute; display:block; }
+.media .blur { inset:0; width:100%; height:100%; object-fit:cover; filter:blur(38px) brightness(.4); transform:scale(1.15); }
+.media .fg.wide { left:40px; top:300px; width:1000px; height:1040px; object-fit:contain; clip-path:inset(4px round 16px); transform-origin:50% 50%; }
+.media .src { position:absolute; left:0; right:0; top:1370px; text-align:center; font-family:'{{fonts.label.family}}'; font-size:20px; letter-spacing:.08em; text-transform:uppercase; color:var(--bone); }
+
+/* captions: one line, no box, soft shadow; spoken words full, upcoming at 45% */
+#captions { position:absolute; left:0; top:0; width:1080px; height:1920px; z-index:10; }
+.cap { position:absolute; left:0; right:0; top:__CAP_TOP__px; height:__CAP_H__px; display:flex; justify-content:center; align-items:center; visibility:hidden; }
+.cap span.box { font-family:'{{fonts.body.family}}'; font-weight:{{fonts.body.weight}}; font-size:{{captions.size}}; letter-spacing:{{fonts.body.tracking}}; white-space:nowrap;
+  text-shadow:0 2px 18px rgba(0,0,0,.75), 0 1px 3px rgba(0,0,0,.6); }
+.cap .w { color:var(--bone); }   /* upcoming words are dimmed by opacity in the timeline */
+
+.tc { display:inline; }
+
+/* split: captions sit at the seam between the source (top) and him (bottom), on a Night pill so they read on Paper */
+.cap.seam span.box { background:color-mix(in srgb, var(--night) 92%, transparent); padding:10px 22px 14px; border-radius:10px; text-shadow:none; }

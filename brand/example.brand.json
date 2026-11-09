@@ -1,0 +1,63 @@
+{
+ "name": "Fieldnote",
+ "handle": "@fieldnote.studio",
+ "tagline": "Notes from the work",
+ "colors": {
+  "ground": "#101418",
+  "text": "#F2F0EA",
+  "muted": "#8C939C",
+  "paper": "#F4EFE6",
+  "accent": "#FF7A45",
+  "accent_ink": "#E2551C"
+ },
+ "fonts": {
+  "display": {
+   "family": "Instrument Sans",
+   "weight": 600,
+   "tracking": -0.04
+  },
+  "body": {
+   "family": "Instrument Sans",
+   "weight": 500,
+   "tracking": -0.01
+  },
+  "label": {
+   "family": "IBM Plex Mono",
+   "weight": 500,
+   "tracking": 0.06
+  }
+ },
+ "captions": {
+  "size": 54
+ },
+ "rules": {
+  "text_below_neck": true,
+  "max_takeovers": 2,
+  "speaker_words_only": true,
+  "accent_one_word": true,
+  "avoid_mic_led": true,
+  "captions_always_on": true
+ },
+ "opening_default": "ask",
+ "logo": null,
+ "sound": {
+  "music": null,
+  "bed_db_under_voice": 18,
+  "sfx": "subtle"
+ },
+ "allow_words": [
+  "fieldnote",
+  "studio",
+  "notes",
+  "from",
+  "the",
+  "work",
+  "source"
+ ],
+ "never": [
+  "emoji stickers",
+  "tilted cards",
+  "rainbow gradients"
+ ],
+ "tone": "direct, no hype"
+}

@@ -1,0 +1,8 @@
+{
+  "name": "reel-studio",
+  "version": "0.1.0",
+  "description": "Edit talking-head reels end to end in your own brand: guided setup, brand.md intake with a style board, a timed build (captions, statements, source splits, particle takeovers), a sound pass, and two-gate QA with an independent reviewer.",
+  "author": { "name": "Inneraktive" },
+  "license": "MIT",
+  "keywords": ["video", "reels", "shorts", "editing", "hyperframes", "brand", "qa"]
+}
