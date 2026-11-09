@@ -8,7 +8,7 @@ captions, end card. A grey silhouette stands in for the speaker. Open it in a br
 """
 import argparse, html, json, os, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from brand import validate, font_faces
+from brand import validate, font_faces, slug
 
 def board(b, fonts_dir):
     c, f = b["colors"], b["fonts"]
@@ -55,14 +55,16 @@ s{{position:absolute;width:10px;height:10px;border-radius:50%}}
 .article .hl em{{position:absolute;left:0;bottom:-6px;width:480px;height:10px;background:{ink}}}
 .half{{position:absolute;left:0;top:960px;width:1080px;height:960px;overflow:hidden;background:{c['ground']}}}
 .cap{{position:absolute;left:0;right:0;top:1414px;text-align:center;font-size:{b.get('captions', {}).get('size', 54)}px;{dfont}}}
-.cap.seam{{top:846px}} .cap.seam{{background:none}}
+.cap.seam{{top:846px;left:50%;right:auto;transform:translateX(-50%);background:{c['ground']};padding:6px 26px 10px;border-radius:40px;white-space:nowrap}}
 </style></head><body><h1>{name} · style board (stills, scaled to 30%)</h1><div class='grid'>{cells}</div></body></html>"""
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser(); ap.add_argument("brand"); ap.add_argument("out")
-    ap.add_argument("--fonts", default=os.path.expanduser(os.path.join(os.environ.get("REEL_STUDIO_CACHE", "~/.cache/reel-studio"), "fonts", "brand")))
+    ap.add_argument("--fonts", help="folder with the brand's font files (default: the cache folder for this brand)")
     a = ap.parse_args()
     b = json.load(open(a.brand))
+    if not a.fonts:
+        a.fonts = os.path.expanduser(os.path.join(os.environ.get("REEL_STUDIO_CACHE", "~/.cache/reel-studio"), "fonts", slug(b["name"])))
     errs = validate(b)
     if errs: sys.exit("Fix the brand first:\n  - " + "\n  - ".join(errs))
     fonts = os.path.relpath(a.fonts, os.path.dirname(os.path.abspath(a.out)))

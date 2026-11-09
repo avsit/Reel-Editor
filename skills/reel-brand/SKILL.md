@@ -25,7 +25,7 @@ Fill gaps from the doc's spirit, and list every value you inferred so they can c
 `python3 RS/engine/brand.py validate brand/brand.json`. It checks contrast for phone legibility (text/ground ≥ 7:1, accent/ground ≥ 4.5:1) and the schema. A failure → propose the nearest passing colour, show both, let them pick.
 
 ## 4. Fonts (ask first)
-Say which families will be downloaded from Google Fonts (free, OFL), then on a yes: `python3 RS/engine/brand.py fonts brand/brand.json ~/.cache/reel-studio/fonts/brand`. A family that isn't on Google Fonts: ask the user for the font file (woff2/ttf) and confirm they hold a licence that covers video. prep.py copies the fonts into each project.
+Say which families will be downloaded from Google Fonts (free, OFL), then on a yes: `python3 RS/engine/brand.py fonts brand/brand.json ~/.cache/reel-studio/fonts/<brand-name-slug>` (one folder per brand, e.g. `fonts/fieldnote`; prep.py and the style board look there). A family that isn't on Google Fonts: ask the user for the font file (woff2/ttf) and confirm they hold a licence that covers video. prep.py copies the fonts into each project.
 
 ## 5. Style board (stills)
 `python3 RS/engine/style_board.py brand/brand.json brand/style_board.html` renders one page of stills in their brand: a typed hook frame, a statement below a placeholder head, a 50/50 split, a takeover with particles, captions and the end card. Screenshot it (`hyperframes snapshot` or the browser) and show it. Iterate on their notes until they approve; only then is the brand ready for **reel-editor**.

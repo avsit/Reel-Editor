@@ -11,7 +11,7 @@ Does, in order:
   4. face       OpenCV YuNet face samples -> build/face.json (the face guard reads it)
   5. project    reel.json, an edit.py from the template, public/ (gsap, particles.js, brand fonts), broll/
 """
-import argparse, json, os, platform, shutil, subprocess, sys
+import argparse, json, os, platform, re, shutil, subprocess, sys
 
 ENGINE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(ENGINE)
@@ -70,7 +70,8 @@ def main():
     gsap = os.path.join(CACHE, "node", "node_modules", "gsap", "dist", "gsap.min.js")
     if os.path.exists(gsap): shutil.copy(gsap, f"{pub}/vendor/gsap.min.js")
     else: print("  ! GSAP not found in the cache: run python3 scripts/setup.py node-deps")
-    fonts = os.path.join(CACHE, "fonts", os.path.basename(a.brand).split(".")[0])
+    bname = json.load(open(a.brand))["name"]
+    fonts = os.path.join(CACHE, "fonts", re.sub(r"[^a-z0-9]+", "-", bname.lower()).strip("-"))   # one folder per brand
     if os.path.isdir(fonts):
         for f in os.listdir(fonts): shutil.copy(os.path.join(fonts, f), f"{pub}/fonts/{f}")
     else: print(f"  ! brand fonts not fetched yet: python3 engine/brand.py fonts {a.brand} {fonts}")
