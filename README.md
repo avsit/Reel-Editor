@@ -10,7 +10,7 @@ Works on macOS, Windows and Linux. Everything runs locally.
 
 In Claude Code:
 ```
-/plugin marketplace add <your-github-user>/reel-studio
+/plugin marketplace add avsit/Reel-Editor
 /plugin install reel-studio@reel-studio
 ```
 Then:
